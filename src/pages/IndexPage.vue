@@ -64,13 +64,13 @@ const count = ref(0);
 const min = -5;
 const max = 5;
 
-const profile = reactive({ displayName: null });
+const profile = ref({ displayName: null });
 const loggedIn = ref(false);
 // const occoredError = ref();
 
-const getProfile = () => {
-  liff.getProfile().then((value) => {
-    profile = value;
+const getProfile = async () => {
+  await liff.getProfile().then((value) => {
+    profile.value = value;
   });
 };
 
