@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import liff from '@line/liff';
 
 const count = ref(0);
@@ -64,9 +64,9 @@ const count = ref(0);
 const min = -5;
 const max = 5;
 
-const profile = ref();
-const loggedIn = ref();
-const occoredError = ref();
+const profile = reactive({ displayName: null });
+const loggedIn = ref(false);
+// const occoredError = ref();
 
 const getProfile = () => {
   liff.getProfile().then((value) => {
@@ -77,7 +77,7 @@ const getProfile = () => {
 liff
   .init({ liffId: '2000974460-O7Wnvb2W' }) // LIFF IDを貼る
   .then(() => {
-    loggedIn = liff.isLoggedIn();
+    loggedIn.value = liff.isLoggedIn();
     getProfile();
   })
   .catch((err) => {
