@@ -10,6 +10,7 @@
     "build": "npm ci && quasar build"
   },
   "dependencies": {
+    "@line/liff": "^2.22.4",
     "@quasar/extras": "^1.15.4",
     "quasar": "^2.9.2",
     "vue": "^3.2.40",
